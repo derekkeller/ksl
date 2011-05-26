@@ -1,5 +1,5 @@
 .top_menu {
-	width: 800px;
+	width: 1000px;
 	margin-right: auto;
 	margin-left: auto;
 	border: solid 1px #000;
@@ -10,8 +10,20 @@
 	background-color: #EAF4F6;
 }
 
+.top_menu_admin {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	border: solid 1px #000;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	background-color: red;
+}
+
 .body_container {
-	width: 800px;
+	width: 1000px;
 	margin-right: auto;
 	margin-left: auto;
 	border: solid 1px #000;
@@ -20,6 +32,75 @@
 	background-color: #FFF;
 }
 
+.ad_body {
+/*  float:left;*/
+/*  height:1%;*/
+  padding-bottom:10px;
+  padding-left:0;
+  padding-right:0;
+  padding-top:15px;
+  position:relative;
+  width:635px;
+	height: 300px;
+	border: dashed 1px red;
+	
+/*	width: 610px;
+	margin-top: 4px;
+	border: dashed 1px;
+	background-color: red;
+	float: left;*/
+/*	height: 1%;*/
+}
+
+.ad_box {
+  border-bottom-color:#CCCCCC;
+  border-bottom-style: dashed;
+  border-bottom-width:1px;
+  padding-bottom:10px;
+  padding-left:0;
+  padding-right:0;
+  padding-top:15px;
+  width:610px;
+	float: left;
+	height: 100px;
+/*	position: relative;*/
+}
+
+.ad_detail {
+	width: 400px;
+	float: left;	
+	border: dashed 1px;
+}
+
+.ad_image {
+	margin-right: 15px;
+	float: left;
+}
+
+.ad_title {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	border: dashed 1px;	
+}
+
+.ad_time {
+  clear:right;
+  color:#555555;
+  font-size:11px;
+  font-weight:bold;
+  padding-bottom:6px;
+  padding-top:5px;
+	border: dashed 1px;
+}
+
+.ad_more_box {
+	margin: 0px;
+	padding: 0px;
+	float:right;
+  text-align:right;
+  width:80px;
+	border: dashed 1px;
+}
 
 body { background-color: #4E7DA7; color: #333; }
 

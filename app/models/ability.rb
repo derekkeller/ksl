@@ -11,9 +11,8 @@ class Ability
         post.user_id == user.id
       end
     end
-    can :read, Post
+    can :read, :all
   end
-      
 
   # def initialize(user)
     # Define abilities for the passed in user here. For example:

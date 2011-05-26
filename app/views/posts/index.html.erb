@@ -2,7 +2,10 @@
 
 <table>
   <tr>
+    <th>Posted At</th>
+    <th>Detail</th>
     <th>User ID</th>
+    <th>Public</th>
     <th>Title</th>
     <th>Price</th>
     <th>Description</th>
@@ -20,7 +23,10 @@
 
 <% @posts.each do |post| %>
   <tr>
+    <td><%= formated_date(post.created_at) %></td>
+    <td><%= time_since_post(post.created_at).humanize %> ago</td>
     <td><%= post.user_id %></td>
+    <td><%= post.public? ? "Yes" : "No" %></td>
     <td><%= post.title %></td>
     <td><%= post.price %></td>
     <td><%= post.description %></td>
@@ -38,6 +44,29 @@
 <% end %>
 </table>
 
+<%= link_to 'New Post', new_post_path %>
+
+<div class="ad_body">
+    <div class="ad_box">
+        <div class="ad_image">
+            <%= image_tag 'guitar.jpg'%>
+        </div>
+        <div class="ad_detail">
+            <div class="ad_title">
+                Title would go here
+            </div>
+            <div class="ad_time">
+                <%= Time.now %>
+            </div>
+        </div>
+        <div class="ad_more_box">
+          More Here
+        </div>
+    </div>
+</div>
+
+
+
 <br />
 
-<%= link_to 'New Post', new_post_path %>
+

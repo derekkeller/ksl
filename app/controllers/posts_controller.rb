@@ -2,16 +2,17 @@ class PostsController < ApplicationController
 
   load_and_authorize_resource
 
-  # GET /posts
-  # GET /posts.xml
-  def index
-    @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
+  def index  
+    if current_user.present?
+      if current_user.admin?
+        @posts = Post.all(:order => "created_at DESC")
+      else current_user.manager?
+        @posts = Post.where('public = 1 OR user_id = ?', current_user.id).all(:order => "created_at DESC")
+      end
     end
+    @posts = Post.where(:public => true).all(:order => "created_at DESC")
   end
+  
 
   # GET /posts/1
   # GET /posts/1.xml
@@ -27,7 +28,9 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
+    @user = current_user
+    @post = @user.posts.build
+    # @post = Post.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +46,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new(params[:post])
+    @user = current_user
+    @post = @user.posts.build(params[:post])
+    # @post = Post.new(params[:post])
 
     respond_to do |format|
       if @post.save

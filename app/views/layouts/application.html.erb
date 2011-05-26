@@ -21,6 +21,22 @@
     <% end %>
   </div>
 
+	<div class="header_container">
+		<div class="header_menu">
+			<div style="color:#FFF; font-size:30px; font-family:georgia; padding-top:60px; padding-left:20px; font-style:italic">Where Sellers Meet Buyers
+			</div>
+			<div id="home_button">
+				<%= link_to 'Home', welcome_path %>
+			</div>
+			<div id="classifieds_button">
+				<%= link_to 'Classifieds', posts_path %>
+			</div>
+			<div id="contact_button">
+				<%= link_to 'Contact Us', 'contact' %>
+			</div>
+		</div>
+	</div>
+
   <div class='body_container'>
     <div class='alert'><%= alert %></div>
     <div class='notice'><%= notice %></div>

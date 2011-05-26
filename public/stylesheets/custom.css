@@ -1,0 +1,214 @@
+.top_menu {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	border: solid 1px #000;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 40px;
+/*	margin-bottom: 20px;*/
+	background: url(../images/menu_background.png);
+	background-repeat: repeat;
+}
+
+.top_menu_admin {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	border: solid 1px #000;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 40px;
+/*	margin-bottom: 20px;*/
+	background: url(../images/menu_background.png);
+	background-repeat: repeat;
+}
+
+.body_container {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	border: solid 1px #000;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #FFF;
+	position: relative;
+}
+
+.header_container {
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border: solid #000 1px;
+	border-radius: 5px;
+	background: #FFF url('../images/header.png') no-repeat;
+	background-size: 1020px;
+/*	position: relative;*/
+/*	background-size: 1020px 220px;*/
+/*	background-repeat: repeat;*/
+}
+
+.header_menu {
+	height: 200px;
+	position: relative;
+}
+
+#home_button {
+	position: absolute;
+	left: 550px;
+	top: -10px;
+}
+
+#home_button a:link, #home_button a:visited {
+		width: 146px;
+		height: 50px;
+		text-indent: 55px;
+		line-height: 38px;
+		color: #FFF;
+		background: url(../images/home.png) no-repeat top left;
+		display: block;
+		text-decoration: none;
+}
+
+#home_button a:hover {
+		width: 146px;
+		height: 50px;
+		text-indent: 55px;
+		line-height: 38px;
+		color: #FFF;
+		background: url(../images/home.png) bottom left;
+		display: block;
+		text-decoration: none;
+		border: none;
+}
+
+#contact_button {
+	position: absolute;
+	left: 850px;
+	top: -10px;
+}
+
+#contact_button a:link, #contact_button a:visited {
+		width: 146px;
+		height: 50px;
+		text-indent: 55px;
+		line-height: 38px;
+		color: #FFF;
+		background: url(../images/contact.png) no-repeat top left;
+		display: block;
+		text-decoration: none;
+}
+
+#contact_button a:hover {
+		width: 146px;
+		height: 50px;
+		text-indent: 55px;
+		line-height: 38px;
+		color: #FFF;
+		background: url(../images/contact.png) bottom left;
+		display: block;
+		text-decoration: none;
+		border: none;
+}
+
+#classifieds_button {
+	position: absolute;
+	left: 700px;
+	top: -10px;
+}
+
+#classifieds_button a:link, #classifieds_button a:visited {
+		width: 146px;
+		height: 50px;
+		text-indent: 55px;
+		line-height: 38px;
+		color: #FFF;
+		background: url(../images/classifieds.png) no-repeat top left;
+		display: block;
+		text-decoration: none;
+}
+
+#classifieds_button a:hover {
+		width: 146px;
+		height: 50px;
+		text-indent: 55px;
+		line-height: 38px;
+		color: #FFF;
+		background: url(../images/classifieds.png) no-repeat bottom left;
+		display: block;
+		text-decoration: none;
+		border: none;
+}
+
+
+.ad_body {
+/*  float:left;*/
+/*  height:1%;*/
+  padding-bottom:10px;
+  padding-left:0;
+  padding-right:0;
+  padding-top:15px;
+  position:relative;
+  width:635px;
+	height: 300px;
+	border: dashed 1px red;
+	
+/*	width: 610px;
+	margin-top: 4px;
+	border: dashed 1px;
+	background-color: red;
+	float: left;*/
+/*	height: 1%;*/
+}
+
+.ad_box {
+  border-bottom-color:#CCCCCC;
+  border-bottom-style: dashed;
+  border-bottom-width:1px;
+  padding-bottom:10px;
+  padding-left:0;
+  padding-right:0;
+  padding-top:15px;
+  width:610px;
+	float: left;
+	height: 100px;
+/*	position: relative;*/
+}
+
+.ad_detail {
+	width: 400px;
+	float: left;	
+	border: dashed 1px;
+}
+
+.ad_image {
+	margin-right: 15px;
+	float: left;
+}
+
+.ad_title {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	border: dashed 1px;	
+}
+
+.ad_time {
+  clear:right;
+  color:#555555;
+  font-size:11px;
+  font-weight:bold;
+  padding-bottom:6px;
+  padding-top:5px;
+	border: dashed 1px;
+}
+
+.ad_more_box {
+	margin: 0px;
+	padding: 0px;
+	float:right;
+  text-align:right;
+  width:80px;
+	border: dashed 1px;
+}

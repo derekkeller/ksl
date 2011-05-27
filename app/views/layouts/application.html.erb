@@ -23,8 +23,6 @@
 
 	<div class="header_container">
 		<div class="header_menu">
-			<div style="color:#FFF; font-size:30px; font-family:georgia; padding-top:60px; padding-left:20px; font-style:italic">Where Sellers Meet Buyers
-			</div>
 			<div id="home_button">
 				<%= link_to 'Home', welcome_path %>
 			</div>
@@ -32,24 +30,46 @@
 				<%= link_to 'Classifieds', posts_path %>
 			</div>
 			<div id="contact_button">
-				<%= link_to 'Contact Us', 'contact' %>
+				<%= link_to 'Contact Us', :contact %>
 			</div>
       <div class="main_menu">
         <ul>
-          <li><%= link_to "Home", 'welcome', :class=>"#{@welcome_class}" %></li>
+          <li><%= link_to "Home", :welcome, :class=>"#{@welcome_class}" %></li>
           <li><%= link_to "Classifieds", posts_path, :class=>"#{@classifieds_class}" %></li>
-          <li><%= link_to "Contact", 'contact', :class=>"#{@contact_class}" %></li>
+          <li><%= link_to "Contact", :contact, :class=>"#{@contact_class}" %></li>
         </ul>
       </div>
+			<div class="middle_banner">
+				<div id="<%= @current_banner %>">
+				</div>	
+			</div>
 		</div>
+
 	</div>
 
   <div class='body_container'>
     <div class='alert'><%= alert %></div>
     <div class='notice'><%= notice %></div>
 
-    <%= yield %>
+		<div class="content">
+			<div class="main_content">
+				<%= yield %>
+			</div>
+			<div class="right_content">
+				<%= yield :right_content%>
+			</div>
+		</div>
+
+
+
+		<p class="clear" />
   </div>
+	<div class="footer">
+		<p>&copy; DK KSL &nbsp;&nbsp;
+			<%= link_to "Privacy Policy", "#" %> |
+			<%= link_to "Terms  & Conditions", "#" %>
+		</p>
+	</div>
 
 </body>
 </html>

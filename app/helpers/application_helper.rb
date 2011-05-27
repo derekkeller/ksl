@@ -10,7 +10,7 @@ module ApplicationHelper
     "top_menu"
   end
 
-  def formated_date(date)
+  def formatted_date(date)
     if date > Time.now.beginning_of_day
       return date.strftime("%l:%M%p")
     end
@@ -19,6 +19,10 @@ module ApplicationHelper
 
   def time_since_post(date)
     return time_ago_in_words(date)
+  end
+
+  def nh(n,p=0)
+    number_to_currency(n, :precision => p)
   end
     
 end

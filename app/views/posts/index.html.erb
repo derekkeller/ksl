@@ -1,72 +1,44 @@
-<h1>Listing posts</h1>
+<h1>Welcome to the DK Classifieds</h1>
+<p>Please see the available entries listed below. All items are on a first come first serve basis, and absolutely no reserve bidding is allowed, cash is due on transaction completion. And remember, only deal locally. Enjoy!</p>
 
-<table>
-  <tr>
-    <th>Posted At</th>
-    <th>Detail</th>
-    <th>User ID</th>
-    <th>Public</th>
-    <th>Title</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>List name</th>
-    <th>List email</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zipcode</th>
-    <th>Type</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= formated_date(post.created_at) %></td>
-    <td><%= time_since_post(post.created_at).humanize %> ago</td>
-    <td><%= post.user_id %></td>
-    <td><%= post.public? ? "Yes" : "No" %></td>
-    <td><%= post.title %></td>
-    <td><%= post.price %></td>
-    <td><%= post.description %></td>
-    <td><%= post.list_name %></td>
-    <td><%= post.list_email %></td>
-    <td><%= post.city %></td>
-    <td><%= post.state %></td>
-    <td><%= post.zipcode %></td>
-    <td><%= post.post_type.capitalize %></td>
-    <td><%= post.category_id %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= link_to 'New Post', new_post_path %>
+<h3>Listing posts <% if can? :create, Post %> | <%= link_to 'New Post', new_post_path %><% end %></h3>
 
 <div class="ad_body">
+	<% @posts.each do |post| %>
     <div class="ad_box">
         <div class="ad_image">
-            <%= image_tag 'guitar.jpg'%>
+            <%= image_tag cycle('mower.jpg','guitar.jpg') %>
         </div>
         <div class="ad_detail">
             <div class="ad_title">
-                Title would go here
+                <%= link_to post.title, post %>
             </div>
             <div class="ad_time">
-                <%= Time.now %>
+                <%= truncate(post.description, :length => 200, :omission => "...") %>
+            </div>
+            <div class="ad_time">
+                <%= formatted_date(post.created_at) %> |
+                <%= "Posted " + time_since_post(post.created_at) + " ago" %>
+            </div>
+            <div class="ad_time">
+								<% if can? :update, post %>
+									<%= link_to 'Edit', edit_post_path(post) %> |
+									<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+								<% end %>
             </div>
         </div>
         <div class="ad_more_box">
-          More Here
+          <%= nh(post.price) %>
         </div>
     </div>
+	<% end %>
+	<p class="clear" />
 </div>
 
-
-
-<br />
-
+<% content_for :right_content do %>
+	<p>Be sure to checkout all the great things we have going each Monday morning!</p>
+	<%= image_tag 'deal.png' %>
+	<p>But, that's not to say that everything is boring, here are some product pictures</p>
+	<%= image_tag 'basketball.png', :class => 'product' %>
+<% end %>
 

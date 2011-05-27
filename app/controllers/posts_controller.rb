@@ -94,6 +94,7 @@ class PostsController < ApplicationController
 private
   def set_active_tab
     @classifieds_class = 'current'
+    @current_banner = 'header_classifieds'
   end
 
 end

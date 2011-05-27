@@ -251,13 +251,14 @@
 
 
 .ad_body {
-/*  padding-bottom:10px;
+  padding-bottom:10px;
   padding-left:0;
   padding-right:0;
   padding-top:15px;
-  position:relative;*/
-	width:680px;
-/*	border: dashed 1px red;*/
+  position:relative;
+  width:635px;
+	border: dashed 1px red;
+/*	clear: both;*/
 }
 
 .ad_box {
@@ -268,12 +269,15 @@
   padding-left:0;
   padding-right:0;
   padding-top:15px;
-  width:680px;
+  width:610px;
 	float: left;
+	height: 100px;
+/*	clear: both;*/
+/*	position: relative;*/
 }
 
 .ad_detail {
-	width: 475px;
+	width: 400px;
 	float: left;	
 /*	border: dashed 1px;*/
 }
@@ -315,16 +319,8 @@
 	margin: 0px;
 	padding: 0px;
 	float:right;
-  text-align: left;
+  text-align:right;
   width:80px;
-	height: 100px;
-	text-indent: 20px;
-	line-height: 40px;
-	font-size: 15px;
-	font-weight: bold;
-	font-family: "Trebuchet MS"	;
-	background: url("../images/pricetag.png") no-repeat;
-	position: block;
 /*	border: dashed 1px;*/
 }
 
@@ -336,7 +332,7 @@
 	float: left;
 	width: 680px;
 	margin: 0;
-/*	border: dashed 1px;	*/
+	border: dashed 1px;	
 }
 
 .main_content h1, h2, h3, h4 {
@@ -367,7 +363,7 @@
 .right_content {
 	float: right;
 	width: 300px;
-	border-left: solid 1px #CCC;
+	border: dashed 1px;
 	padding: 0 0 0 10px;
 	margin: 0;
 }

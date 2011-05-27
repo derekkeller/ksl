@@ -34,6 +34,13 @@
 			<div id="contact_button">
 				<%= link_to 'Contact Us', 'contact' %>
 			</div>
+      <div class="main_menu">
+        <ul>
+          <li><%= link_to "Home", 'welcome', :class=>"#{@welcome_class}" %></li>
+          <li><%= link_to "Classifieds", posts_path, :class=>"#{@classifieds_class}" %></li>
+          <li><%= link_to "Contact", 'contact', :class=>"#{@contact_class}" %></li>
+        </ul>
+      </div>
 		</div>
 	</div>
 

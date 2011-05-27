@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 
   load_and_authorize_resource
 
+  before_filter :set_active_tab
+
   def index  
     if current_user.present?
       if current_user.admin?
@@ -88,4 +90,10 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+private
+  def set_active_tab
+    @classifieds_class = 'current'
+  end
+
 end

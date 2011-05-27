@@ -55,6 +55,56 @@
 	position: relative;
 }
 
+/*MAIN MENU*/
+
+.main_menu {
+	position: absolute;
+	left: 790px;
+	bottom: -10px;
+}
+
+.main_menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.main_menu li {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+.main_menu li a:link, .main_menu li a:visited {
+	font-family: "Trebuchet MS", sans-serif;
+	display: block;
+	color: #FFF;
+	text-decoration: none;
+	height: 22px;
+	background: url(../images/main_menu.png) no-repeat bottom left;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 1px;
+	line-height: 23px;
+}
+
+.main_menu li a:hover {
+	background: url(../images/main_menu.png) no-repeat top left;
+	color: #FC0;
+}
+
+.main_menu li a.current {
+	margin-top: -6px;
+	height: 28px;
+	background: url(../images/main_menu_active.png) no-repeat bottom left;
+	color: #FC0;
+}
+
+.main_menu li a.current:hover {
+	cursor: default;
+}
+
+
 #home_button {
 	position: absolute;
 	left: 550px;

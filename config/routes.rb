@@ -1,9 +1,25 @@
 Ksl::Application.routes.draw do
+
+  # get "categories#appliances"
+
+  match "posts/appliances" => "categories#appliances", :as => "appliances"
+  # match "books_and_media" => "categories#books_and_media"
+  # match "clothing" => "categories#clothing"
+  # match "computers" => "categories#computers"
+  # match "electronics" => "categories#electronics"
+  # match "furniture" => "categories#furniture"
+  # match "general" => "categories#general"
+  # match "homes" => "categories#homes"
+  # match "recreational_vehicles" => "categories#recreational_activities"
+
   devise_for :users
   resources :posts
+  resources :categories
 
   resources :users do
-    resources :posts
+    resources :posts do
+      resources :categories
+    end
   end
 
   root :to => 'pages#welcome'

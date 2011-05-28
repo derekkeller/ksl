@@ -560,3 +560,23 @@
 	margin-top: 10px;
 	float: left;
 }
+
+.category_list ul{
+	list-style: none;
+	padding: 0;
+}
+
+.category_list ul li {
+	margin-bottom: 10px;
+}
+
+.category_list ul li a:link, .category_list ul li a:visited {
+	color: #666;
+	text-decoration: none;
+}
+
+.category_list ul li a:hover {
+	color: #666;
+	text-decoration: underline;
+	background: none;
+}

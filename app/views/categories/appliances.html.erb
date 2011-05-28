@@ -1,0 +1,35 @@
+<h1>Appliances</h1>
+
+<h3>Listing posts <% if can? :create, Post %> | <%= link_to 'New Post', new_post_path %><% end %></h3>
+
+<div class="ad_body">
+	<% @posts.each do |post| %>
+    <div class="ad_box">
+        <div class="ad_image">
+            <%= image_tag cycle('mower.jpg','guitar.jpg') %>
+        </div>
+        <div class="ad_detail">
+            <div class="ad_title">
+                <%= link_to post.title, post %>
+            </div>
+            <div class="ad_time">
+                <%= truncate(post.description, :length => 200, :omission => "...") %>
+            </div>
+            <div class="ad_time">
+                <%= formatted_date(post.created_at) %> |
+                <%= "Posted " + time_since_post(post.created_at) + " ago" %>
+            </div>
+            <div class="ad_time">
+								<% if can? :update, post %>
+									<%= link_to 'Edit', edit_post_path(post) %> |
+									<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+								<% end %>
+            </div>
+        </div>
+        <div class="ad_more_box">
+          <%= nh(post.price) %>
+        </div>
+    </div>
+	<% end %>
+	<p class="clear" />
+</div>

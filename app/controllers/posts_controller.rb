@@ -15,6 +15,17 @@ class PostsController < ApplicationController
     @posts = Post.where(:public => true).all(:order => "created_at DESC")
   end
   
+  def post_search
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @posts = Post.where("category_id = ?", @category)
+    end
+    render :update do |page|
+      page.replace_html :posts_data, :partial => 'posts'
+      page.replace_html :category_id, @category.name
+    end
+  end
+  
 
   # GET /posts/1
   # GET /posts/1.xml

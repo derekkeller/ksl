@@ -3,42 +3,24 @@
 
 <h3>Listing posts <% if can? :create, Post %> | <%= link_to 'New Post', new_post_path %><% end %></h3>
 
-<div class="ad_body">
-	<% @posts.each do |post| %>
-    <div class="ad_box">
-        <div class="ad_image">
-            <%= image_tag cycle('mower.jpg','guitar.jpg') %>
-        </div>
-        <div class="ad_detail">
-            <div class="ad_title">
-                <%= link_to post.title, post %>
-            </div>
-            <div class="ad_time">
-                <%= truncate(post.description, :length => 200, :omission => "...") %>
-            </div>
-            <div class="ad_time">
-                <%= formatted_date(post.created_at) %> |
-                <%= "Posted " + time_since_post(post.created_at) + " ago" %>
-            </div>
-            <div class="ad_time">
-								<% if can? :update, post %>
-									<%= link_to 'Edit', edit_post_path(post) %> |
-									<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
-								<% end %>
-            </div>
-        </div>
-        <div class="ad_more_box">
-          <%= nh(post.price) %>
-        </div>
-    </div>
-	<% end %>
-	<p class="clear" />
+<div class="posts_data">
+	<%= render 'posts' %>
 </div>
 
 <% content_for :right_content do %>
-	<p>Be sure to checkout all the great things we have going each Monday morning!</p>
-	<%= image_tag 'deal.png' %>
-	<p>But, that's not to say that everything is boring, here are some product pictures</p>
-	<%= image_tag 'basketball.png', :class => 'product' %>
-<% end %>
+	<div class="category_list">
+		<h2>Browse By Category</h2>
+		<ul>
+			<% Category.all.each do |category| %>
+				<li><%= link_to category.name.capitalize, category.name.downcase %></li>
+			<% end %>
+		</ul>
+	</div>
+	
+	<%= form_tag '/posts/post_search', :remote => true do %>
+		<%= label_tag :category_id %>
+		<%= select_tag :category_id, options_for_select(Category.all.map {|c| [c.name, c.id]}, :category_id) %>
+		<%= submit_tag :search %>
+	<% end %>
 
+<% end %>

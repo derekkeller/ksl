@@ -50,7 +50,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.select :category_id, (Category.all.collect {|c| [c.name, c.id]}) %>
+    <%= f.select :category_id, (Category.all.collect {|c| [c.name, c.id]}), :include_blank => true %>
   </div>
   <div class="field">
     <%= f.label :public %><br />

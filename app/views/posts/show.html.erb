@@ -30,7 +30,7 @@
 		<div class="post_container_name">
 			<div id="name">
 				<h1>Seller Information</h1>
-				<h2>Name: <%= [@post.list_name, @poster.last_name].join(' ') %></h2>
+				<h2>Name: <%= [@post.list_name, @post.user.last_name].join(' ') %></h2>
 				<h2>Email: <%= @post.list_email %></h2>
 				<h2>Phone: <%= number_to_phone(@poster.phone, :area_code => true) %></h2>
 			</div>

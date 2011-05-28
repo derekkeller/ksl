@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   # GET /posts/1.xml
   def show
     @post = Post.find(params[:id])
+    @poster = User.find(@post.user_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -95,6 +96,7 @@ private
   def set_active_tab
     @classifieds_class = 'current'
     @current_banner = 'header_classifieds'
+    @footer_image = 'footer_classifieds'
   end
 
 end

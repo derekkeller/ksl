@@ -47,6 +47,10 @@
 
 	</div>
 
+	<div class="chat_now">
+		<%= link_to "chat", :contact %>
+	</div>
+
   <div class='body_container'>
     <div class='alert'><%= alert %></div>
     <div class='notice'><%= notice %></div>
@@ -59,16 +63,20 @@
 				<%= yield :right_content%>
 			</div>
 		</div>
-
-
-
 		<p class="clear" />
   </div>
+	<div class="footer_spacer">
+	</div>
 	<div class="footer">
-		<p>&copy; DK KSL &nbsp;&nbsp;
-			<%= link_to "Privacy Policy", "#" %> |
-			<%= link_to "Terms  & Conditions", "#" %>
-		</p>
+		<div id="<%= @footer_image%>">
+			<p>&copy; DK KSL &nbsp;&nbsp;
+				<%= link_to "Privacy Policy", "#" %> |
+				<%= link_to "Terms  & Conditions", "#" %>
+			</p>
+		</div>
+	</div>
+	<div class="buy_now">
+		<%= link_to "buy", posts_path %>
 	</div>
 
 </body>

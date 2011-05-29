@@ -16,14 +16,23 @@ Ksl::Application.routes.draw do
   resources :posts
   resources :categories
 
+  # resources :categories do
+  #   resources :posts
+  # end
+
+  resources :categories do
+    resources :posts
+  end
+    
   resources :users do
-    resources :posts do
-      resources :categories
+    resources :categories do
+      resources :posts
     end
   end
 
   root :to => 'pages#welcome'
 
+  match 'all_posts' => 'categories#all_posts'
   match 'contact' => 'pages#contact'
   match 'welcome', :to => 'pages#welcome'
   

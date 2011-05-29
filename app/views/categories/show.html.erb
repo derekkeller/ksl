@@ -1,6 +1,6 @@
-<h1>furniture</h1>
+<h2><%= link_to "All", categories_path %> > <%= @category.name %></h2>
 
-<h3>Listing posts <% if can? :create, Post %> | <%= link_to 'New Post', new_post_path %><% end %></h3>
+<h3>Listing posts <% if can? :create, Post %> | <%= link_to 'New Post', new_category_post_path(@category) %><% end %></h3>
 
 <div class="ad_body">
 	<% @posts.each do |post| %>
@@ -10,7 +10,7 @@
         </div>
         <div class="ad_detail">
             <div class="ad_title">
-                <%= link_to post.title, post %>
+                <%= link_to post.title, category_post_path(@category.id, post) %>
             </div>
             <div class="ad_time">
                 <%= truncate(post.description, :length => 200, :omission => "...") %>
@@ -21,7 +21,7 @@
             </div>
             <div class="ad_time">
 								<% if can? :update, post %>
-									<%= link_to 'Edit', edit_post_path(post) %> |
+									<%= link_to 'Edit', edit_category_post_path(@category.id, post) %> |
 									<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
 								<% end %>
             </div>
@@ -32,4 +32,8 @@
     </div>
 	<% end %>
 	<p class="clear" />
+	<% if can? :update, @category %>
+		<%= link_to "Edit Category", edit_category_path(@category) %> |
+		<%= link_to "Kill Category", @category, :method => :delete, :message => "Are you sure you want to delete?" %>
+	<% end %>
 </div>

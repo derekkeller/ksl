@@ -37,9 +37,9 @@
 		</div>
 		<div id="edit_features">
 			<% if can? :update, @post %>
-				<%= link_to 'Edit', edit_post_path(@post) %> |
+				<%= link_to 'Edit', edit_category_post_path(@category.id, @post) %> |
 			<% end %>
-				<%= link_to 'Back', posts_path %>
+				<%= link_to 'Back', category_path(@category) %>
 		</div>
 	</div>
 	<p class="clear" />

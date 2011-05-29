@@ -1,44 +1,61 @@
 class CategoriesController < ApplicationController
 
+  before_filter :set_active_tab
+  load_and_authorize_resource
+
+  def index
+    @categories = Category.all
+  end
+
   def show
-    @posts = Post.find(params[:id])
-    @category = @posts 
+    @all_posts = Post.all
+    @category = Category.find(params[:id])
+    @posts = @category.posts
   end
 
-  def appliances
-    @posts = Post.where("category_id = ?", 1)
+  def new
+    @category = Category.new
+    @categories = Category.all
+  end
+  
+  def create
+    @category = Category.new(params[:category])
+    if @category.save
+      redirect_to @category, :notice => 'Category created'
+    else
+      render :new
+    end
   end
 
-  def books_and_media
-    @posts = Post.where("category_id = ?", 2)
+  def edit
+    @category = Category.find(params[:id])
+  end
+  
+  def update
+    @category = Category.find(params[:id])
+    if @category.update_attributes(params[:category])
+      redirect_to @category
+    else
+      render :new
+    end
+  end
+  
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to :categories
   end
 
-  def clothing
-    @posts = Post.where("category_id = ?", 3)
+
+  def all_posts
+    @posts = Post.all(:order => "created_at DESC")
   end
 
-  def computers
-    @posts = Post.where("category_id = ?", 4)
-  end
-
-  def electronics
-    @posts = Post.where("category_id = ?", 5)
-  end
-
-  def furniture
-    @posts = Post.where("category_id = ?", 6)
-  end
-
-  def general
-    @posts = Post.where("category_id = ?", 7)
-  end
-
-  def homes
-    @posts = Post.where("category_id = ?", 8)
-  end
-
-  def recreational_vehicles
-    @posts = Post.where("category_id = ?", 9)
-  end
+  private
+    def set_active_tab
+      @classifieds_class = 'current'
+      @current_banner = 'header_classifieds'
+      @footer_image = 'footer_classifieds'
+    end
 
 end

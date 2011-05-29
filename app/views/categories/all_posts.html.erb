@@ -1,7 +1,4 @@
-<h1>books_and_media</h1>
-
-
-<h3>Listing posts <% if can? :create, Post %> | <%= link_to 'New Post', new_post_path %><% end %></h3>
+<h3>All Posts <% if can? :create, Post %> | <%= link_to 'New Post', new_post_path %><% end %></h3>
 
 <div class="ad_body">
 	<% @posts.each do |post| %>

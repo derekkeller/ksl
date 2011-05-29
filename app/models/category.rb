@@ -1,6 +1,8 @@
 class Category < ActiveRecord::Base
 
-  has_and_belongs_to_many :posts
+  belongs_to :user
+  has_many :posts, :dependent => :nullify
+  
   
   # attr_accessible :name
 

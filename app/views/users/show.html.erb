@@ -41,15 +41,8 @@
                 <%= truncate(post.description, :length => 200, :omission => "...") %>
             </div>
             <div class="ad_time">
-               <%= formatted_date(post.created_at) %> |
-               <%= "Posted " + time_since_post(post.created_at) + " ago" %>
-            </div>
-            <div class="ad_time">
-							<% if post.category_id.present? %>
-									<%= link_to post.category.name, category_path(post.category_id) %>
-							<% else %>
-								(no category)
-							<% end %>
+                <%= formatted_date(post.created_at) %> |
+                <%= "Posted " + time_since_post(post.created_at) + " ago" %>
             </div>
             <div class="ad_time">
 								<% if can? :update, post %>

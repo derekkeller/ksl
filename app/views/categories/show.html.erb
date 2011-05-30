@@ -1,5 +1,10 @@
 <h2><%= link_to "All", categories_path %> > <%= @category.name %></h2>
 
+<%= form_tag category_path(@category), :method => 'get' do %>
+	<%= text_field_tag :my_search, params[:my_search] %>
+	<%= submit_tag 'search' %>
+<% end %>
+
 <h3>Listing posts <% if can? :create, Post %> | <%= link_to 'New Post', new_category_post_path(@category.id) %><% end %></h3>
 
 <div class="ad_body">

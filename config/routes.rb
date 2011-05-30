@@ -20,6 +20,10 @@ Ksl::Application.routes.draw do
   #   resources :posts
   # end
 
+  resources :users do
+    resources :posts
+  end
+
   resources :categories do
     resources :posts
   end

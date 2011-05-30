@@ -4,13 +4,17 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @categories = Category.all
+    @categories = Category.order('created_at DESC').all
   end
 
   def show
-    @all_posts = Post.all
-    @category = Category.find(params[:id])
-    @posts = @category.posts
+    if params[:my_search]
+      @posts = Post.search(params[:my_search]).order('created_at DESC')
+      # @posts = Post.where('title LIKE ?', "%#{params[:my_search]}%")
+    else
+      @category = Category.find(params[:id])
+      @posts = @category.posts.order('created_at DESC')
+    end
   end
 
   def new

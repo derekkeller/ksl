@@ -16,5 +16,5 @@ class PagesController < ApplicationController
     @current_banner = 'header_contact'
     @footer_image = 'footer_contact'
   end
-  
+
 end

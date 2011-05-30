@@ -1,15 +1,15 @@
 <div class="category_list">
 	<h2>Browse By Category</h2>
 	<ul>
+		<% if can? :create, Category %>
+			<li id="list_highlight"><%= link_to "New Category", new_category_path %></li>
+		<% end %>
+		<br />
+			<li id="list_highlight"><%= link_to "All Posts", posts_path %></li>
 		<% @categories.each do |category| %>
-			<li>
+			<li id="list_highlight">
 				<%= link_to category.name, category %>
 			</li>
 		<% end %>
-			<li><%= link_to "All Posts", :all_posts %></li>
 	</ul>
-	<% if can? :create, Category %>
-		<%= link_to "New Category", new_category_path %>
-	<% end %>
-
 </div>

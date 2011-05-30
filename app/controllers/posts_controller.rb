@@ -6,40 +6,73 @@ class PostsController < ApplicationController
   def index  
     if current_user.present?
       if current_user.admin?
-        @posts = Post.all(:order => "created_at DESC")
+        
+        if params[:my_search]
+          @posts = Post.search(params[:my_search]).order('created_at DESC')
+        elsif params[:category_search]
+          @posts = Post.category_search(params[:category_search])
+        else
+          @posts = Post.order('created_at DESC').all
+        end
       else current_user.manager?
         @posts = Post.where('public = 1 OR user_id = ?', current_user.id).all(:order => "created_at DESC")
       end
     end
-    @posts = Post.where(:public => true).all(:order => "created_at DESC")
+    if params[:my_search]
+      @posts = Post.search(params[:my_search]).where(:public => true).all(:order => "created_at DESC")
+    elsif params[:category_search]
+      @posts = Post.category_search(params[:category_search]).where(:public => true).all(:order => "created_at DESC")
+    else
+      @posts = Post.where(:public => true).all(:order => "created_at DESC")
+    end
+    @my_posts = Post.where(:user_id => current_user.id)
   end
 
   def show
-    @category = Category.find(params[:category_id])
-    @post = @category.posts.find(params[:id])
-    @poster = User.find(@post.user_id)
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @post = @category.posts.find(params[:id])
+      @poster = User.find(@post.user_id)
+    else
+      @category = Post.find(params[:id]).category
+      @post = Post.find(params[:id])
+      @poster = User.find(@post.user_id)
+    end
   end
 
   def new
-    @category = Category.find(params[:category_id])
-    @post = @category.posts.new
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @post = @category.posts.new
+    else
+      @post = Post.new
+    end
   end
 
   def create
-    @category = Category.find(params[:category_id])
-    @post = @category.posts.new(params[:post].merge(:user_id => current_user.id))
-    @post.user_id = current_user.id
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @post = @category.posts.new(params[:post].merge(:user_id => current_user.id))
+      @post.user_id = current_user.id
+    else
+      @post = Post.new(params[:post].merge(:user_id => current_user.id))
+      @post.user_id = current_user.id
+    end
 
     if @post.save
-      redirect_to category_post_path(@category, @post), :notice => 'Post was successfully created.'
+      if params[:category_id]
+        redirect_to category_post_path(@category, @post), :notice => 'Post was successfully created.'
+      else
+        redirect_to @post
+      end
     else
       render :new
     end
   end
 
   def edit
-    @category = Category.find(params[:category_id])
-    @post = @category.posts.find(params[:id])
+    @post = Post.find(params[:id])
+    @category = @post.category
   end
 
   def update
@@ -57,7 +90,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @category = @post.category_id
     @post.destroy
-    redirect_to category_path(@category)
+    if @category.present?
+      redirect_to category_path(@category)
+    else
+      redirect_to posts_path
+    end
   end
 
   # def destroy

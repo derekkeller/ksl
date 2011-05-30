@@ -580,3 +580,18 @@
 	text-decoration: underline;
 	background: none;
 }
+
+.alert {
+	color: red;
+	border: solid #F7EBEB 1px;
+	border-radius: 3px;
+	padding: 5px;
+}
+
+.notice {
+	color: green;
+	background-color: #EBF3EF;
+	border: solid green 1px;
+	border-radius: 3px;
+	padding: 5px;
+}

@@ -13,18 +13,7 @@ class PostsController < ApplicationController
     end
     @posts = Post.where(:public => true).all(:order => "created_at DESC")
   end
-  
-  def post_search
-    if params[:category_id].present?
-      @category = Category.find(params[:category_id])
-      @posts = Post.where("category_id = ?", @category)
-    end
-    render :update do |page|
-      page.replace_html :posts_data, :partial => 'posts'
-      page.replace_html :category_id, @category.name
-    end
-  end
-  
+
   def show
     @category = Category.find(params[:category_id])
     @post = @category.posts.find(params[:id])
@@ -36,21 +25,21 @@ class PostsController < ApplicationController
     @post = @category.posts.new
   end
 
-  def edit
-    @category = Category.find(params[:category_id])
-    @post = @category.posts.find(params[:id])
-  end
-
   def create
     @category = Category.find(params[:category_id])
     @post = @category.posts.new(params[:post].merge(:user_id => current_user.id))
     @post.user_id = current_user.id
 
     if @post.save
-      redirect_to categories_path, :notice => 'Post was successfully created.'
+      redirect_to category_post_path(@category, @post), :notice => 'Post was successfully created.'
     else
       render :new
     end
+  end
+
+  def edit
+    @category = Category.find(params[:category_id])
+    @post = @category.posts.find(params[:id])
   end
 
   def update
@@ -58,7 +47,7 @@ class PostsController < ApplicationController
     @post = @category.posts.find(params[:id])
 
     if @post.update_attributes(params[:post])
-      redirect_to categories_path, :notice => 'Post was successfully updated.'
+      redirect_to category_post_path(@category, @post), :notice => 'Post was successfully updated.'
     else
       render :edit
     end
@@ -66,8 +55,27 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @category = @post.category_id
     @post.destroy
-    redirect_to categories_path
+    redirect_to category_path(@category)
+  end
+
+  # def destroy
+  #   @category = Category.find(params[:category_id])
+  #   @post = @category.posts.find(params[:id])
+  #   @post.destroy
+  #   redirect_to @category
+  # end
+
+  def post_search
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+      @posts = Post.where("category_id = ?", @category)
+    end
+    render :update do |page|
+      page.replace_html :posts_data, :partial => 'posts'
+      page.replace_html :category_id, @category.name
+    end
   end
 
 private

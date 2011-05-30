@@ -54,8 +54,11 @@
 	</div>
 
   <div class='body_container'>
-    <div class='alert'><%= alert %></div>
-    <div class='notice'><%= notice %></div>
+		<% if alert.present? %>
+	    <div class='alert'><%= alert %></div>
+		<% elsif notice.present? %>
+	    <div class='notice'><%= notice %></div>
+		<% end %>
 
 		<div class="content">
 			<div class="main_content">
@@ -70,7 +73,7 @@
 	<div class="footer_spacer">
 	</div>
 	<div class="footer">
-		<div id="<%= @footer_image%>">
+		<div id="<%= @footer_image %>">
 			<p>&copy; DK KSL &nbsp;&nbsp;
 				<%= link_to "Privacy Policy", "#" %> |
 				<%= link_to "Terms  & Conditions", "#" %>

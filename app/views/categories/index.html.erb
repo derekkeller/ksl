@@ -5,10 +5,10 @@
 			<li id="list_highlight"><%= link_to "New Category", new_category_path %></li>
 		<% end %>
 		<br />
-			<li id="list_highlight"><%= link_to "All Posts", posts_path %></li>
+			<li id="list_highlight"><%= link_to "All Posts (#{Post.count})", posts_path %></li>
 		<% @categories.each do |category| %>
 			<li id="list_highlight">
-				<%= link_to category.name, category %>
+				<%= link_to "#{category.name} (#{category.posts.count})", category %>
 			</li>
 		<% end %>
 	</ul>

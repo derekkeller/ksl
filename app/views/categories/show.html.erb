@@ -1,4 +1,4 @@
-<h2><%= link_to "All", categories_path %> > <%= @category.name %></h2>
+<h2><%= link_to "All (#{Post.count})", categories_path %> > <%= @category.name %> (<%= @posts.count %>)</h2>
 
 <%= form_tag category_path(@category), :method => 'get' do %>
 	<%= text_field_tag :my_search, params[:my_search] %>

@@ -1,6 +1,8 @@
 <h1>Welcome to the DK Classifieds</h1>
 <p>Please see the available entries listed below. All items are on a first come first serve basis, and absolutely no reserve bidding is allowed, cash is due on transaction completion. And remember, only deal locally. Enjoy!</p>
 
+<h2>You Have <%= pluralize(@posts.count, "post") %></h2>
+
 <%= form_tag posts_path, :method => 'get' do %>
 	<%= text_field_tag :my_search, params[:my_search] %>
 	<%= submit_tag "search" %>
@@ -63,9 +65,9 @@
 	<div class="category_list">
 		<h2>Browse By Category</h2>
 		<ul>
-				<li id="list_highlight"><%= link_to "All Categories", posts_path %></li>
+				<li id="list_highlight"><%= link_to "All Categories (#{Post.count})", posts_path %></li>
 			<% Category.all.each do |category| %>
-				<li id="list_highlight"><%= link_to category.name.capitalize, category %></li>
+				<li id="list_highlight"><%= link_to "#{category.name.capitalize} (#{category.posts.count})", category %></li>
 			<% end %>
 		</ul>
 	</div>

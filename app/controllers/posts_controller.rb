@@ -25,7 +25,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.where(:public => true).all(:order => "created_at DESC")
     end
-    @my_posts = Post.where(:user_id => current_user.id)
   end
 
   def show
